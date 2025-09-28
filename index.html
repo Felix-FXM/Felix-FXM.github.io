@@ -74,25 +74,45 @@
       background: #3E5B5D;
       color: #ffffff;
     }
-    .skills {
+    .skills, .projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
       margin-top: 3rem;
-      max-width: 800px;
+      max-width: 900px;
       width: 100%;
     }
-    .skill-box {
+    .skill-box, .project-box {
       background: #E6E9E6;
       color: #3E5B5D;
       padding: 1.5rem;
       border-radius: 1rem;
       font-weight: bold;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, background 0.3s ease;
+      position: relative;
+      cursor: pointer;
     }
-    .skill-box:hover {
+    .skill-box:hover, .project-box:hover {
       transform: translateY(-5px);
+    }
+    .project-info {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #E8EBE8;
+      color: #3E5B5D;
+      padding: 1rem;
+      border-radius: 0 0 1rem 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 0.9rem;
+      line-height: 1.4;
+      z-index: 10;
+    }
+    .project-box:hover .project-info {
+      display: block;
     }
     .section-banner {
       width: 100%;
@@ -113,6 +133,46 @@
     .banner-mid {
       background: #E8EBE8;
       color: #3E5B5D;
+    }
+    /* Minigame Styles */
+    #minigame {
+      margin-top: 2rem;
+    }
+    .wires {
+      display: flex;
+      justify-content: space-around;
+      max-width: 600px;
+      margin: auto;
+      visibility: hidden;
+    }
+    .wire-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .wire {
+      width: 60px;
+      height: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #3E5B5D;
+    }
+    #start-btn {
+      margin-top: 1rem;
+      padding: 0.5rem 1.5rem;
+      background: #3E5B5D;
+      color: white;
+      border: none;
+      border-radius: 1rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    #start-btn:hover {
+      background: #2c4345;
     }
   </style>
 </head>
@@ -144,7 +204,17 @@
 
   <section id="projekte">
     <div class="section-banner banner-mid">Projekte</div>
-    <p>Ich habe bereits kleinere eigene Projekte umgesetzt, wie z. B. Websites und einfache Programme, um mein Wissen praktisch anzuwenden. Dabei habe ich gelernt, strukturiert und lösungsorientiert zu arbeiten.</p>
+    <div class="projects">
+      <div class="project-box">Eigenbau-PC & Systemintegration
+        <div class="project-info">Aufbau eines eigenen PCs mit sorgfältiger Auswahl der Komponenten, Installation und Konfiguration des Betriebssystems sowie Integration ins Heimnetzwerk.</div>
+      </div>
+      <div class="project-box">Robo-Projekt (Schulprojekt)
+        <div class="project-info">Entwicklung eines einfachen Roboters im Rahmen eines Schulprojekts mit Fokus auf Teamarbeit, Sensorsteuerung und Programmierung.</div>
+      </div>
+      <div class="project-box">Automatisierung mit LEGO / Mikrocontroller
+        <div class="project-info">Umsetzung kleiner Automatisierungsaufgaben mit LEGO Mindstorms und Mikrocontrollern, inklusive Programmierung von Bewegungsabläufen und Logiksteuerung.</div>
+      </div>
+    </div>
   </section>
 
   <section id="softskills">
@@ -156,6 +226,68 @@
     <div class="section-banner banner-light">Warum ich</div>
     <p>Ich möchte nicht nur eine Ausbildung absolvieren, sondern auch Verantwortung übernehmen und aktiv zu Projekten beitragen. Mein Ziel ist es, langfristig ein wertvoller Teil des Unternehmens zu sein.</p>
     <a href="#" class="button">Lernen wir uns kennen</a>
+
+    <!-- Minigame Section -->
+    <div id="minigame">
+      <h2>Mini-Game: Verbinde die Kabel</h2>
+      <p>Verbinde die Kabel richtig, um zu sehen warum ich der Beste für den Ausbildungsplatz bin!</p>
+      <button id="start-btn">Start</button>
+      <div class="wires" id="wires">
+        <div class="wire-col" id="left-wires">
+          <div class="wire" data-color="red" style="background:red"></div>
+          <div class="wire" data-color="blue" style="background:blue"></div>
+          <div class="wire" data-color="green" style="background:green"></div>
+          <div class="wire" data-color="yellow" style="background:yellow"></div>
+        </div>
+        <div class="wire-col" id="right-wires">
+          <div class="wire" data-color="green" style="background:green"></div>
+          <div class="wire" data-color="red" style="background:red"></div>
+          <div class="wire" data-color="blue" style="background:blue"></div>
+          <div class="wire" data-color="yellow" style="background:yellow"></div>
+        </div>
+      </div>
+      <div id="result"></div>
+    </div>
   </section>
+
+  <script>
+    let firstWire = null;
+    let gameStarted = false;
+
+    document.getElementById('start-btn').addEventListener('click', () => {
+      document.getElementById('wires').style.visibility = 'visible';
+      document.getElementById('result').innerText = '';
+      document.querySelectorAll('.wire').forEach(w => {
+        w.style.opacity = 1;
+        w.dataset.matched = '';
+      });
+      gameStarted = true;
+    });
+
+    document.querySelectorAll('.wire').forEach(wire => {
+      wire.addEventListener('click', () => {
+        if (!gameStarted) return;
+        if (!firstWire) {
+          firstWire = wire;
+          wire.style.outline = '3px solid black';
+        } else {
+          if (firstWire.dataset.color === wire.dataset.color && firstWire !== wire) {
+            firstWire.style.opacity = 0.5;
+            wire.style.opacity = 0.5;
+            firstWire.style.outline = 'none';
+            wire.style.outline = 'none';
+            firstWire.dataset.matched = true;
+            wire.dataset.matched = true;
+          } else {
+            firstWire.style.outline = 'none';
+          }
+          firstWire = null;
+          if ([...document.querySelectorAll('.wire')].every(w => w.dataset.matched)) {
+            document.getElementById('result').innerText = 'Ich bin der Beste für den Ausbildungsplatz!';
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
