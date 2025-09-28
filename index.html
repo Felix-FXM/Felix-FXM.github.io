@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bewerbung Fachinformatiker</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
+      background: #ffffff;
+      color: #3E5B5D;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #3E5B5D;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 1000;
+    }
+    header a {
+      color: #E6E9E6;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    header a:hover {
+      color: #E8EBE8;
+    }
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 3rem;
+    }
+    h1, h2 {
+      color: #3E5B5D;
+      margin-bottom: 1rem;
+    }
+    p {
+      max-width: 700px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    .highlight {
+      color: #ffffff;
+      background: #3E5B5D;
+      padding: 0 0.3rem;
+      border-radius: 4px;
+    }
+    .button {
+      padding: 0.8rem 2rem;
+      border: 2px solid #3E5B5D;
+      border-radius: 2rem;
+      text-decoration: none;
+      color: #3E5B5D;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    .button:hover {
+      background: #3E5B5D;
+      color: #ffffff;
+    }
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 3rem;
+      max-width: 800px;
+      width: 100%;
+    }
+    .skill-box {
+      background: #E6E9E6;
+      color: #3E5B5D;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .skill-box:hover {
+      transform: translateY(-5px);
+    }
+    .section-banner {
+      width: 100%;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 2rem;
+    }
+    .banner-green {
+      background: #3E5B5D;
+    }
+    .banner-light {
+      background: #E6E9E6;
+      color: #3E5B5D;
+    }
+    .banner-mid {
+      background: #E8EBE8;
+      color: #3E5B5D;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#motivation">Motivation</a>
+    <a href="#faehigkeiten">Fähigkeiten</a>
+    <a href="#projekte">Projekte</a>
+    <a href="#softskills">Soft Skills</a>
+    <a href="#warumich">Warum ich</a>
+  </header>
+
+  <section id="motivation">
+    <div class="section-banner banner-green">Motivation</div>
+    <p>Technologie begeistert mich, weil sie <span class="highlight">Probleme löst</span> und Neues erschafft. Meine Motivation liegt darin, mein Wissen zu erweitern und gleichzeitig Mehrwert zu schaffen.</p>
+  </section>
+
+  <section id="faehigkeiten">
+    <div class="section-banner banner-light">Fähigkeiten</div>
+    <div class="skills">
+      <div class="skill-box">Teamfähigkeit</div>
+      <div class="skill-box">Neugier</div>
+      <div class="skill-box">Logisches Denken</div>
+      <div class="skill-box">Kreativität</div>
+      <div class="skill-box">Einsatzbereitschaft</div>
+      <div class="skill-box">Verantwortung</div>
+    </div>
+  </section>
+
+  <section id="projekte">
+    <div class="section-banner banner-mid">Projekte</div>
+    <p>Ich habe bereits kleinere eigene Projekte umgesetzt, wie z. B. Websites und einfache Programme, um mein Wissen praktisch anzuwenden. Dabei habe ich gelernt, strukturiert und lösungsorientiert zu arbeiten.</p>
+  </section>
+
+  <section id="softskills">
+    <div class="section-banner banner-green">Soft Skills</div>
+    <p>Meine <span class="highlight">Geduld</span>, Kommunikationsfähigkeit und Freude am Lernen helfen mir, mich schnell in Teams einzufinden und gemeinsam Erfolge zu erzielen.</p>
+  </section>
+
+  <section id="warumich">
+    <div class="section-banner banner-light">Warum ich</div>
+    <p>Ich möchte nicht nur eine Ausbildung absolvieren, sondern auch Verantwortung übernehmen und aktiv zu Projekten beitragen. Mein Ziel ist es, langfristig ein wertvoller Teil des Unternehmens zu sein.</p>
+    <a href="#" class="button">Lernen wir uns kennen</a>
+  </section>
+</body>
+</html>
