@@ -12,8 +12,8 @@
           --text-white: rgba(255, 255, 255, 0.95);
 
           --flag-de-color: #FF0000;
-          --flag-fr-color: #0055A4;
-          --flag-us-color: #B22234;
+          --flag-fr-color: #00AEEF;
+          --flag-us-color: #0000FF;
         }
 
         * {
@@ -184,9 +184,11 @@
           opacity: 1;
           transform: none;
           transition: all 0.3s ease;
-          flex: 1 1 calc(33.333% - 20px);
-          min-width: 280px;
-          max-width: 380px;
+          flex: 1 1 320px;
+          min-width: 200px;
+          max-width: 600px;
+          width: 100%;
+          height: auto;
           box-sizing: border-box;
           position: relative;
           display: flex;
@@ -197,48 +199,141 @@
           color: var(--text-white);
         }
 
-        .skills-box-container .info-box {
-          flex: 1 1 calc(33.333% - 20px);
-          min-width: 250px;
-          max-width: 320px;
-          height: 170px;
-          font-size: 18px;
-        }
-
         .info-box:hover {
           transform: translateY(-6px);
           box-shadow: 0 10px 30px 0 rgba( 255, 255, 255 ,0.6);
         }
 
+        /* Skills Container - spezifisch */
+        .skills-box-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+          max-width: 900px;
+          width: 100%;
+          margin: 0 auto;
+        }
+
+        .skills-box-container .info-box {
+          width: 280px;
+          height: 100px;
+          min-width: 280px;
+          max-width: 280px;
+          min-height: 100px;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px);
+          border-radius: 24px;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          padding: 20px 24px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 16px;
+          font-size: 18px;
+          color: #fff;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          flex: none;
+        }
+
+        .skills-box-container .info-box:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 24px rgba(255, 255, 255, 0.4);
+          background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Sprachen Container mit Progress Bars */
+        .language-box-container {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+          max-width: 500px;
+          width: 100%;
+          margin: 0 auto;
+        }
+
+        .language-item {
+          background: rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          padding: 20px 24px;
+          transition: all 0.3s ease;
+        }
+
+        .language-item:hover {
+          background: rgba(255, 255, 255, 0.12);
+          transform: translateY(-4px);
+          box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .language-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 12px;
+        }
+
+        .language-name {
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--text-white);
+        }
+
+        .language-level {
+          font-size: 14px;
+          color: rgba(255, 255, 255, 0.7);
+        }
+
+        .progress-bar-container {
+          width: 100%;
+          height: 10px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 10px;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .progress-bar {
+          height: 100%;
+          border-radius: 10px;
+          transition: width 1.5s ease;
+          position: relative;
+        }
+
+        .progress-bar.german {
+          background: linear-gradient(90deg, #FF0000, #FF4444);
+          width: 100%;
+        }
+
+        .progress-bar.english {
+          background: linear-gradient(90deg, #0055A4, #3377BB);
+          width: 85%;
+        }
+
+        .progress-bar.french {
+          background: linear-gradient(90deg, #B22234, #D44455);
+          width: 60%;
+        }
+
         .info-icon {
           flex-shrink: 0;
-          font-size: 28px;
-          width: 48px;
-          height: 48px;
+          font-size: 32px;
+          width: 40px;
+          height: 40px;
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
-        .info-box.flag-de {
-          background-image: none;
-          padding-left: 24px;
-          border-left: 8px solid var(--flag-de-color);
-        }
-        .info-box.flag-fr {
-          background-image: none;
-          padding-left: 24px;
-          border-left: 8px solid var(--flag-fr-color);
-        }
-        .info-box.flag-us {
-          background-image: none;
-          padding-left: 24px;
-          border-left: 8px solid var(--flag-us-color);
-        }
-
         .scroll-hint {
           position: absolute;
-          bottom: 200px;
+          bottom: 100px;
           left: 50%;
           transform: translateX(-50%);
           color: var(--text-white);
@@ -260,12 +355,7 @@
 
         @media (max-width: 1024px) {
           .info-box {
-            flex: 1 1 calc(50% - 20px);
-            max-width: 100%;
-          }
-
-          .skills-box-container .info-box {
-            flex: 1 1 calc(50% - 20px);
+            flex: 1 1 100%;
             max-width: 100%;
           }
         }
@@ -323,12 +413,20 @@
             min-width: unset;
           }
 
+          .skills-box-container {
+            gap: 16px;
+          }
+
           .skills-box-container .info-box {
-            flex: 1 1 100%;
+            width: 100%;
             max-width: 100%;
             min-width: unset;
             height: auto;
-            min-height: 120px;
+            min-height: 80px;
+          }
+
+          .language-box-container {
+            max-width: 100%;
           }
         }
 
@@ -414,15 +512,33 @@
 
     <section class="text-section section-5 sprache" id="Sprache">
         <div class="main-text">Sprachen</div>
-        <div class="info-box-container">
-            <div class="info-box flag-de">
-                <div class="info-text">Deutsch (Muttersprache)</div>
+        <div class="language-box-container">
+            <div class="language-item">
+                <div class="language-header">
+                    <span class="language-name">Deutsch</span>
+                    <span class="language-level">(Muttersprache)</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar german"></div>
+                </div>
             </div>
-            <div class="info-box flag-us">
-                <div class="info-text">Englisch (6 Jahre)</div>
+            <div class="language-item">
+                <div class="language-header">
+                    <span class="language-name">Englisch</span>
+                    <span class="language-level">(6 Jahre)</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar english"></div>
+                </div>
             </div>
-            <div class="info-box flag-fr">
-                <div class="info-text">Französisch (3 Jahre)</div>
+            <div class="language-item">
+                <div class="language-header">
+                    <span class="language-name">Französisch</span>
+                    <span class="language-level">(3 Jahre)</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar french"></div>
+                </div>
             </div>
         </div>
     </section>
