@@ -1,566 +1,470 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fachinformatiker Bewerbung - AYOCIN Style</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Felix - Bewerbung Fachinformatiker</title>
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            --text-white: rgba(255, 255, 255, 0.95);
+          --glass-bg: rgba(255, 255, 255, 0.08);
+          --glass-border: rgba(255, 255, 255, 0.18);
+          --glass-shadow: 0 8px 32px 0 rgba( 255, 255, 255 ,0.2);
+          --text-white: rgba(255, 255, 255, 0.95);
+
+          --flag-de-color: #FF0000;
+          --flag-fr-color: #0055A4;
+          --flag-us-color: #B22234;
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-            overflow-x: hidden;
-            background: #000;
+          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+          overflow-x: hidden;
+          background: #000;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
         }
 
-        /* Fixed Background Image - Vertical Parallax with Zoom */
         .forest-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('Hintergrundbild.png');
-            background-size: 150%; /* Zoomed in for parallax effect */
-            background-position: center center;
-            background-repeat: no-repeat;
-            z-index: -2;
-            will-change: transform;
-            transition: transform 0.1s ease-out;
+          position: fixed;
+          top: 0px;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url('Hintergrundbild.png');
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          z-index: -2;
+          will-change: transform;
+          transition: transform 0.1s ease-out;
         }
 
-        /* Additional atmospheric overlay */
         .forest-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.05) 0%, transparent 50%),
-                        linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 100%);
-            z-index: -1;
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.05) 0%, transparent 50%),
+                      linear-gradient(135deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 100%);
+          z-index: -1;
         }
 
-        /* Liquid Glass Navigation - Always Visible */
         .liquid-nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-radius: 50px;
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            padding: 16px 32px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 1000;
+          background: var(--glass-bg);
+          backdrop-filter: blur(25px);
+          -webkit-backdrop-filter: blur(25px);
+          border-radius: 50px;
+          border: 1px solid var(--glass-border);
+          box-shadow: var(--glass-shadow);
+          padding: 16px 32px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .liquid-nav:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.5);
+          background: rgba(255, 255, 255, 0.12);
+          border-color: rgba(255, 255, 255, 0.25);
+          box-shadow: 0 12px 40px 0 rgba( 255, 255, 255 ,0.5);
         }
 
         .nav-menu {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-            align-items: center;
+          display: flex;
+          gap: 30px;
+          list-style: none;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .nav-menu li a {
+          white-space: nowrap;
         }
 
         .nav-menu a {
-            color: var(--text-white);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            padding: 10px 18px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-            opacity: 0.8;
+          color: var(--text-white);
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 15px;
+          padding: 10px 18px;
+          border-radius: 25px;
+          transition: all 0.3s ease;
+          position: relative;
+          opacity: 0.8;
         }
 
         .nav-menu a:hover {
-            background: rgba(255, 255, 255, 0.15);
-            opacity: 1;
-            transform: translateY(-2px);
+          background: rgba(255, 255, 255, 0.15);
+          opacity: 1;
+          transform: translateY(-2px);
         }
 
         .nav-menu a.active {
-            background: rgba(255, 255, 255, 0.2);
-            opacity: 1;
+          background: rgba(255, 255, 255, 0.2);
+          opacity: 1;
         }
 
-        /* Logo/Brand */
         .nav-logo {
-            color: var(--text-white);
-            font-weight: 700;
-            font-size: 16px;
-            letter-spacing: 1px;
-            margin-right: 20px;
+          color: var(--text-white);
+          font-weight: 700;
+          font-size: 16px;
+          letter-spacing: 1px;
+          margin-right: 20px;
         }
 
-        /* Scrollable Content Container */
         .scroll-container {
-            position: relative;
-            z-index: 1;
-            padding-top: 80px; /* Space for fixed navigation */
+          position: relative;
+          z-index: 1;
+          padding: 80px 40px 120px;
+          flex: 1;
+          width: 100%;
         }
 
-        /* Text Sections */
         .text-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 40px;
-            position: relative;
+          margin-bottom: -90px;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 0 40px;
+          position: relative;
+          width: 100%;
         }
 
-        /* Main Text Content */
         .main-text {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 700;
-            color: var(--text-white);
-            text-align: center;
-            line-height: 1.2;
-            max-width: 900px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+          font-size: clamp(2.5rem, 6vw, 5rem);
+          font-weight: 700;
+          color: var(--text-white);
+          text-align: center;
+          line-height: 1.2;
+          max-width: 900px;
+          text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+          opacity: 1;
+          transform: none;
+          transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+          margin-bottom: 40px;
         }
 
         .main-text.visible {
-            opacity: 1;
-            transform: translateY(0);
+          opacity: 1;
+          transform: none;
         }
 
-        /* Liquid Glass Info Box - Top Right */
+        .info-box-container {
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: stretch;
+          max-width: 1200px;
+          width: 100%;
+          margin: 0 auto;
+        }
+
         .info-box {
-            position: absolute;
-            top: 140px;
-            right: 40px;
-            width: 300px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            padding: 24px;
-            opacity: 0;
-            transform: translateX(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          background: var(--glass-bg);
+          backdrop-filter: blur(30px);
+          -webkit-backdrop-filter: blur(30px);
+          border-radius: 30px;
+          border: 1px solid var(--glass-border);
+          box-shadow: var(--glass-shadow);
+          padding: 24px;
+          opacity: 1;
+          transform: none;
+          transition: all 0.3s ease;
+          flex: 1 1 calc(33.333% - 20px);
+          min-width: 280px;
+          max-width: 380px;
+          box-sizing: border-box;
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          font-size: 18px;
+          line-height: 1.6;
+          color: var(--text-white);
         }
 
-        .info-box.visible {
-            opacity: 1;
-            transform: translateX(0);
+        .skills-box-container .info-box {
+          flex: 1 1 calc(33.333% - 20px);
+          min-width: 250px;
+          max-width: 320px;
+          height: 170px;
+          font-size: 18px;
         }
 
         .info-box:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.25);
-            transform: translateX(0) translateY(-4px);
-            box-shadow: 0 16px 50px 0 rgba(31, 38, 135, 0.6);
+          transform: translateY(-6px);
+          box-shadow: 0 10px 30px 0 rgba( 255, 255, 255 ,0.6);
         }
 
         .info-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 18px;
-            font-size: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+          flex-shrink: 0;
+          font-size: 28px;
+          width: 48px;
+          height: 48px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        .info-text {
-            color: var(--text-white);
-            font-size: 14px;
-            line-height: 1.6;
-            opacity: 0.9;
+        .info-box.flag-de {
+          background-image: none;
+          padding-left: 24px;
+          border-left: 8px solid var(--flag-de-color);
+        }
+        .info-box.flag-fr {
+          background-image: none;
+          padding-left: 24px;
+          border-left: 8px solid var(--flag-fr-color);
+        }
+        .info-box.flag-us {
+          background-image: none;
+          padding-left: 24px;
+          border-left: 8px solid var(--flag-us-color);
         }
 
-        /* Different sections with staggered animations */
-        .text-section:nth-child(1) .main-text { transition-delay: 0.2s; }
-        .text-section:nth-child(2) .main-text { transition-delay: 0.3s; }
-        .text-section:nth-child(3) .main-text { transition-delay: 0.4s; }
-        .text-section:nth-child(4) .main-text { transition-delay: 0.5s; }
-        .text-section:nth-child(5) .main-text { transition-delay: 0.6s; }
-
-        .text-section:nth-child(1) .info-box { transition-delay: 0.8s; }
-        .text-section:nth-child(2) .info-box { transition-delay: 0.9s; }
-        .text-section:nth-child(3) .info-box { transition-delay: 1.0s; }
-        .text-section:nth-child(4) .info-box { transition-delay: 1.1s; }
-        .text-section:nth-child(5) .info-box { transition-delay: 1.2s; }
-
-        /* Scroll indicator for first section */
         .scroll-hint {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--text-white);
-            font-size: 14px;
-            opacity: 0.7;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            padding: 12px 20px;
-            border-radius: 25px;
-            border: 1px solid var(--glass-border);
-            animation: bounce 2s infinite;
+          position: absolute;
+          bottom: 200px;
+          left: 50%;
+          transform: translateX(-50%);
+          color: var(--text-white);
+          font-size: 16px;
+          opacity: 0.7;
+          background: var(--glass-bg);
+          backdrop-filter: blur(20px);
+          padding: 12px 20px;
+          border-radius: 25px;
+          border: 1px solid var(--glass-border);
+          animation: bounce 2s infinite;
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
+          0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+          40% { transform: translateX(-50%) translateY(-10px); }
+          60% { transform: translateX(-50%) translateY(-5px); }
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 1200px) {
-            .info-box {
-                position: static;
-                width: auto;
-                max-width: 400px;
-                margin: 40px auto 0;
-                transform: translateY(30px);
-            }
-            
-            .info-box.visible {
-                transform: translateY(0);
-            }
-            
-            .text-section {
-                flex-direction: column;
-                text-align: center;
-            }
+        @media (max-width: 1024px) {
+          .info-box {
+            flex: 1 1 calc(50% - 20px);
+            max-width: 100%;
+          }
+
+          .skills-box-container .info-box {
+            flex: 1 1 calc(50% - 20px);
+            max-width: 100%;
+          }
         }
 
         @media (max-width: 768px) {
-            .liquid-nav {
-                top: 15px;
-                left: 15px;
-                right: 15px;
-                transform: none;
-                border-radius: 20px;
-                padding: 12px 20px;
-            }
-            
-            .nav-menu {
-                gap: 15px;
-            }
-            
-            .nav-menu a {
-                font-size: 13px;
-                padding: 8px 14px;
-            }
-            
-            .nav-logo {
-                font-size: 14px;
-                margin-right: 10px;
-            }
-            
-            .text-section {
-                padding: 0 20px;
-            }
-            
-            .main-text {
-                font-size: clamp(1.8rem, 8vw, 3rem);
-            }
-            
-            .scroll-container {
-                padding-top: 100px;
-            }
+          .liquid-nav {
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            transform: none;
+            border-radius: 20px;
+            padding: 12px 20px;
+            width: auto;
+          }
 
-            /* Mobile: Less zoom for better visibility */
-            .forest-background {
-                background-size: 120%;
-            }
-        }
+          .nav-menu {
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
 
-        /* Custom styles for different sections */
-        .section-1 .main-text { 
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 600;
-        }
-        
-        .section-2 .main-text {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-        }
-        
-        .section-3 .main-text {
-            font-size: clamp(2.2rem, 5.5vw, 4rem);
-        }
-        
-        .section-4 .main-text {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-        }
-        
-        .section-5 .main-text {
-            font-size: clamp(2rem, 5vw, 3.8rem);
+          .nav-menu a {
+            font-size: 13px;
+            padding: 8px 14px;
+          }
+
+          .nav-logo {
+            font-size: 14px;
+            margin-right: 10px;
+          }
+
+          .text-section {
+            padding: 0 20px;
+          }
+
+          .main-text {
+            font-size: clamp(1.8rem, 8vw, 3rem);
+          }
+
+          .scroll-container {
+            padding: 100px 20px 80px;
+          }
+
+          .forest-background {
+            background-size: cover;
+          }
+
+          .info-box-container {
+            gap: 16px;
+          }
+
+          .info-box {
+            flex: 1 1 100%;
+            max-width: 100%;
+            min-width: unset;
+          }
+
+          .skills-box-container .info-box {
+            flex: 1 1 100%;
+            max-width: 100%;
+            min-width: unset;
+            height: auto;
+            min-height: 120px;
+          }
         }
 
-        /* Enhanced liquid glass effects */
-        .liquid-nav::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            border-radius: inherit;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .liquid-nav:hover::before {
-            opacity: 1;
-        }
-
-        .info-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
-            border-radius: inherit;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .info-box:hover::before {
-            opacity: 1;
+        footer.footer {
+          width: 100%;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 -4px 30px rgba(255, 255, 255, 0.1);
+          padding: 20px 40px;
+          text-align: center;
+          color: var(--text-white);
+          font-size: 14px;
+          user-select: none;
+          flex-shrink: 0;
         }
     </style>
 </head>
 <body>
-    <!-- Fixed Background Image -->
-    <div class="forest-background"></div>
+<div class="forest-background"></div>
+<nav class="liquid-nav">
+    <ul class="nav-menu">
+        <li><a href="#Wer" class="nav-link">Bewerbungsprofil</a></li>
+        <li><a href="#Motivation" class="nav-link">Motivation</a></li>
+        <li><a href="#skills" class="nav-link">Soft Skills</a></li>
+        <li><a href="#Sprache" class="nav-link">Sprache</a></li>
+        <li><a href="#projekte" class="nav-link">Projekte</a></li>
+        <li><a href="#kontakt" class="nav-link">Warum ich?</a></li>
+    </ul>
+</nav>
+<div class="scroll-container">
 
-    <!-- Liquid Glass Navigation - Always Visible -->
-    <nav class="liquid-nav">
-        <div class="nav-logo">BEWERBUNG</div>
-        <ul class="nav-menu">
-            <li><a href="#motivation" class="nav-link">Motivation</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#projekte" class="nav-link">Projekte</a></li>
-            <li><a href="#vision" class="nav-link">Vision</a></li>
-            <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
-        </ul>
-    </nav>
-
-    <!-- Scrollable Content -->
-    <div class="scroll-container">
-        
-        <!-- Section 1: Motivation -->
-        <section class="text-section section-1" id="motivation">
-            <div class="main-text">Ich verbringe 90% meiner Zeit mit Technologie, fernab von langweiligen Theorien</div>
+    <section class="text-section section-1 motivation" id="Wer">
+        <div class="main-text">Bewerbungsprofil von Felix  - Ausbildung zum Fachinformatiker</div>
+        <div class="info-box-container">
             <div class="info-box">
-                <div class="info-icon">💡</div>
-                <div class="info-text">
-                    Während andere Gaming betreiben, entwickle ich bereits eigene Softwarelösungen und baue Hardware-Projekte auf, die echte Probleme lösen.
-                </div>
+                <div class="info-text">Diese Website ergänzt meine offiziellen Bewerbungsunterlagen und zeigt meine Leidenschaft für moderne Technologien. Ich bin 15 Jahre alt und bin hochmotiviert die Ausbildung zum Fachinformatiker ab 2026 zu starten.</div>
             </div>
-            <div class="scroll-hint">Scrollen Sie weiter ↓</div>
-        </section>
+        </div>
+        <div class="scroll-hint">Scrollen Sie weiter ↓</div>
+    </section>
 
-        <!-- Section 2: Skills -->
-        <section class="text-section section-2" id="skills">
-            <div class="main-text">Programmierung ist Teil meiner DNA und formt meine Denkweise für Problemlösungen</div>
+    <section class="text-section section-2 motivation" id="Motivation">
+        <div class="main-text">Meine Motivation</div>
+        <div class="info-box-container">
             <div class="info-box">
                 <div class="info-icon">🧠</div>
-                <div class="info-text">
-                    Von sauberem Code bis zu effizienten Algorithmen - die Logik des Programmierens liefert mir das, was ich zum kreativen Arbeiten brauche.
-                </div>
+                <div class="info-text">Technik und Software faszinieren mich, weil sie die Brücke zwischen Problemen und Lösungen bildet, sowie Innovation schafft. In Schule und Freizeit habe ich bereits gezeigt, dass ich Freude am Programmieren, am praktischen Arbeiten mit Hardware und am kreativen Finden von Lösungen habe. Eine Ausbildung zum Fachinformatiker ist für mich der nächste logische Schritt.</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Section 3: Projects -->
-        <section class="text-section section-3" id="projekte">
-            <div class="main-text">Allerdings werden wir immer isolierter von praktischer Hands-on Erfahrung</div>
+    <section class="text-section section-2 skills" id="skills">
+        <div class="main-text">Meine Soft Skills</div>
+        <div class="info-box-container skills-box-container">
             <div class="info-box">
-                <div class="info-icon">🔧</div>
-                <div class="info-text">
-                    Während unsere Welt digitaler wird, ist es wichtig, den Bezug zur Hardware und zu echten, greifbaren Projekten nicht zu verlieren.
-                </div>
+                <div class="info-icon">💬</div>
+                <div class="info-text">Teamfähigkeit</div>
             </div>
-        </section>
-
-        <!-- Section 4: Vision -->
-        <section class="text-section section-4" id="vision">
-            <div class="main-text">Dennoch werden wir immer mehr von echter Teamarbeit isoliert als jemals zuvor</div>
+            <div class="info-box">
+                <div class="info-icon">👀</div>
+                <div class="info-text">Neugier</div>
+            </div>
+            <div class="info-box">
+                <div class="info-icon">🧩</div>
+                <div class="info-text">Logisches Denken</div>
+            </div>
+            <div class="info-box">
+                <div class="info-icon">💡</div>
+                <div class="info-text">Kreativität</div>
+            </div>
+            <div class="info-box">
+                <div class="info-icon">🛠️</div>
+                <div class="info-text">Einsatzbereitschaft</div>
+            </div>
             <div class="info-box">
                 <div class="info-icon">🤝</div>
-                <div class="info-text">
-                    Von klarer Kommunikation bis zu natürlicher Zusammenarbeit - echte Teams liefern das, was wir für erfolgreiche Projekte brauchen.
-                </div>
+                <div class="info-text">Verantwortung</div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Section 5: Call to Action -->
-        <section class="text-section section-5" id="kontakt">
-            <div class="main-text">Deshalb ist Teamwork Teil dessen, wer ich bin - der Schlüssel für unseren gemeinsamen Erfolg</div>
+    <section class="text-section section-5 sprache" id="Sprache">
+        <div class="main-text">Sprachen</div>
+        <div class="info-box-container">
+            <div class="info-box flag-de">
+                <div class="info-text">Deutsch (Muttersprache)</div>
+            </div>
+            <div class="info-box flag-us">
+                <div class="info-text">Englisch (6 Jahre)</div>
+            </div>
+            <div class="info-box flag-fr">
+                <div class="info-text">Französisch (3 Jahre)</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="text-section section-3 projekte" id="projekte">
+        <div class="main-text">Beispiel-Projekte aus Schule & Freizeit</div>
+        <div class="info-box-container">
+            <div class="info-box">
+                <div class="info-icon">🖥️</div>
+                <div class="info-text">PC-Aufbau & Installation: Komponenten ausgewählt, zusammengebaut und installiert. Integration ins Heimnetzwerk.</div>
+            </div>
+            <div class="info-box">
+                <div class="info-icon">🤖</div>
+                <div class="info-text">Robotik-Schulprojekt: Teamarbeit beim Bau eines Roboters: Verlöten von Elektronikbauteilen und Programmierung.</div>
+            </div>
+            <div class="info-box">
+                <div class="info-icon">🌐</div>
+                <div class="info-text">Kleine JavaScript-Skripte: Erstellung von Mini-Programmen für Spieleereignisse und Automatisierung.</div>
+            </div>
+            <div class="info-box">
+                <div class="info-icon">⚙️</div>
+                <div class="info-text">LEGO-Automatisierung: Programmierung von Bewegungsabläufen mit LEGO Mikrocontrollern.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="text-section section-5 kontakt" id="kontakt">
+        <div class="main-text">Warum ich?</div>
+        <div class="info-box-container">
             <div class="info-box">
                 <div class="info-icon">🚀</div>
-                <div class="info-text">
-                    Lassen Sie uns gemeinsam die Zukunft der Softwareentwicklung gestalten und dabei echte Zusammenarbeit in den Mittelpunkt stellen.
-                </div>
+                <div class="info-text">Ich möchte nicht nur eine Ausbildung absolvieren, sondern auch Verantwortung übernehmen und aktiv zu Projekten beitragen. Mein Ziel ist es, langfristig ein wertvoller Teil des Unternehmens zu sein.</div>
             </div>
-        </section>
+        </div>
+    </section>
+</div>
+
+<footer class="footer">
+    <div class="footer-content">
+        <p>Diese Website ist mit Unterstützung von KI und meinem selbst erarbeiteten Know-how entstanden. </p>
+        <p>Mein Ziel: immer weiter lernen, um auch unabhängig von solchen Tools eigenständig entwickeln zu können.</p>
     </div>
-
-    <script>
-        // Navigation Active State
-        function updateActiveNavLink() {
-            const sections = document.querySelectorAll('.text-section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 200;
-                const sectionHeight = section.offsetHeight;
-                const scrollY = window.scrollY;
-                
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        // Vertical Parallax - Only Up/Down Movement
-        function updateVerticalParallax() {
-            const scrolled = window.pageYOffset;
-            const background = document.querySelector('.forest-background');
-            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-            
-            if (background && maxScroll > 0) {
-                // Normalize scroll position between 0 and 1
-                const scrollProgress = Math.min(scrolled / maxScroll, 1);
-                
-                // Calculate vertical movement - maximum 15% range for zoomed background
-                const maxVerticalMovement = 5; // 15% movement range
-                const yMovement = scrollProgress * maxVerticalMovement - (maxVerticalMovement / 2);
-                
-                // Apply only vertical transform
-                background.style.transform = `translateY(${yMovement}%)`;
-                background.style.backgroundPosition = `center ${50 - yMovement * 0.1}%`;
-            }
-        }
-
-        // Intersection Observer für Scroll-Animationen
-        const observerOptions = {
-            threshold: 0.3,
-            rootMargin: '0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const textElement = entry.target.querySelector('.main-text');
-                    const infoElement = entry.target.querySelector('.info-box');
-                    
-                    if (textElement) textElement.classList.add('visible');
-                    if (infoElement) infoElement.classList.add('visible');
-                } else {
-                    const textElement = entry.target.querySelector('.main-text');
-                    const infoElement = entry.target.querySelector('.info-box');
-                    
-                    if (textElement) textElement.classList.remove('visible');
-                    if (infoElement) infoElement.classList.remove('visible');
-                }
-            });
-        }, observerOptions);
-
-        // Alle Sektionen beobachten
-        document.querySelectorAll('.text-section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Smooth scrolling für Navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offsetTop = target.offsetTop - 100;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Optimized scroll handler with requestAnimationFrame
-        let ticking = false;
-        
-        function handleScroll() {
-            updateActiveNavLink();
-            updateVerticalParallax();
-            ticking = false;
-        }
-
-        // Event Listeners
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(handleScroll);
-                ticking = true;
-            }
-        });
-
-        // Initialize first section
-        document.addEventListener('DOMContentLoaded', () => {
-            const firstSection = document.querySelector('.text-section');
-            if (firstSection) {
-                const textElement = firstSection.querySelector('.main-text');
-                const infoElement = firstSection.querySelector('.info-box');
-                
-                setTimeout(() => {
-                    if (textElement) textElement.classList.add('visible');
-                    if (infoElement) {
-                        setTimeout(() => {
-                            infoElement.classList.add('visible');
-                        }, 600);
-                    }
-                }, 300);
-            }
-            
-            updateActiveNavLink();
-            updateVerticalParallax();
-        });
-    </script>
+</footer>
 </body>
 </html>
