@@ -264,6 +264,8 @@
           border: 1px solid rgba(255, 255, 255, 0.15);
           padding: 20px 24px;
           transition: all 0.3s ease;
+          display: flex;
+          flex-direction: column;
         }
 
         .language-item:hover {
@@ -283,6 +285,9 @@
           font-size: 18px;
           font-weight: 600;
           color: var(--text-white);
+          display: flex;
+          align-items: center;
+          gap: 12px;
         }
 
         .language-level {
@@ -317,18 +322,13 @@
         }
 
         .progress-bar.french {
-          background: linear-gradient(90deg, #B22234, #D44455);
+          background: linear-gradient(90deg, #00AEEF, #33BBFF);
           width: 60%;
         }
 
-        .info-icon {
-          flex-shrink: 0;
-          font-size: 32px;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+        /* Flaggen als Emoji */
+        .language-flag {
+          font-size: 24px;
         }
 
         .scroll-hint {
@@ -515,7 +515,7 @@
         <div class="language-box-container">
             <div class="language-item">
                 <div class="language-header">
-                    <span class="language-name">Deutsch</span>
+                    <span class="language-name"><span class="language-flag">🇩🇪</span> Deutsch</span>
                     <span class="language-level">(Muttersprache)</span>
                 </div>
                 <div class="progress-bar-container">
@@ -524,7 +524,7 @@
             </div>
             <div class="language-item">
                 <div class="language-header">
-                    <span class="language-name">Englisch</span>
+                    <span class="language-name"><span class="language-flag">🇺🇸</span> Englisch</span>
                     <span class="language-level">(6 Jahre)</span>
                 </div>
                 <div class="progress-bar-container">
@@ -533,7 +533,7 @@
             </div>
             <div class="language-item">
                 <div class="language-header">
-                    <span class="language-name">Französisch</span>
+                    <span class="language-name"><span class="language-flag">🇫🇷</span> Französisch</span>
                     <span class="language-level">(3 Jahre)</span>
                 </div>
                 <div class="progress-bar-container">
